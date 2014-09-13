@@ -2,29 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_sleep"
-        android:drawable="@drawable/sleep"/>
+        android:src="@drawable/sleep"/>
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_eat"
-        android:drawable="@drawable/silverware" />
+        android:src="@drawable/silverware" />
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_relax"
-        android:drawable="@drawable/book" />
+        android:src="@drawable/book" />
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_move"
-        android:drawable="@drawable/run" />
+        android:src="@drawable/run" />
 </LinearLayout>
