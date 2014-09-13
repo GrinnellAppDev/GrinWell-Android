@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="You've eaten 0 pieces of fruit."
         android:id="@+id/textView_counter"
-        android:l
+        android:gravity=""
         android:layout_gravity="bottom" />
 
     <Button
