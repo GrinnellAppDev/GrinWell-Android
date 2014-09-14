@@ -22,7 +22,7 @@ public class HomeActivity extends Activity {
         startActivity(intent);
     }
 
-    /*
+
     public void clickEat() {
         Intent intent = new Intent(HomeActivity.this, EatActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -30,6 +30,7 @@ public class HomeActivity extends Activity {
         startActivity(intent);
 
     }
+
 
     public void clickRelax() {
         Intent intent = new Intent(HomeActivity.this, RelaxActivity.class);
@@ -41,13 +42,13 @@ public class HomeActivity extends Activity {
 
 
     public void clickMove() {
-        Intent intent = new Intent(HomeActivity.this, MoveActivity.class);
+        Intent intent = new Intent(HomeActivity.this, MovementActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
 
     }
-*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
