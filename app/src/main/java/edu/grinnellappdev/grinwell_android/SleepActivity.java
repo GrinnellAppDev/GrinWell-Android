@@ -10,14 +10,16 @@ import android.widget.TimePicker;
 
 public class SleepActivity extends ActionBarActivity {
 
-    TimePicker startTime = (TimePicker) findViewById(R.id.timePicker_start);
-    TimePicker endTime = (TimePicker) findViewById(R.id.timePicker_end);
-    Button buttonSubmit = (Button) findViewById(R.id.button_submit);
+    TimePicker startTime;
+    TimePicker endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
+
+        startTime = (TimePicker) findViewById(R.id.timePicker_start);
+        endTime = (TimePicker) findViewById(R.id.timePicker_end);
     }
 
     public void publicSubmit(){
