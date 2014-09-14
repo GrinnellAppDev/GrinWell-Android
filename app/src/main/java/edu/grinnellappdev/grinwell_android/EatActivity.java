@@ -1,13 +1,13 @@
 package edu.grinnellappdev.grinwell_android;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class EatActivity extends ActionBarActivity {
+public class EatActivity extends Activity {
 
     int counter = 0;//TODO: THIS SHOULD PULL FROM PARSE
     TextView textviewCounter;
