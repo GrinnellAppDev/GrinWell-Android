@@ -25,6 +25,7 @@ public class LoginActivity extends Activity {
     String usernameText;
     String passwordText;
     Button logInButton;
+    Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class LoginActivity extends Activity {
 
         //Get The Button(s)
         logInButton = (Button) findViewById(R.id.button_signin);
+
 
         //Log in action
         logInButton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,15 @@ public class LoginActivity extends Activity {
             }//public void onClick
         }//logInButton.setOnClickListener
         );
+
+        //signup button onClick
+        signUpButton = (Button) findViewById(R.id.button_signup);
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, NewSignUpActivity.class));
+            }
+        });
     }//protected void onCreate
 
     @Override

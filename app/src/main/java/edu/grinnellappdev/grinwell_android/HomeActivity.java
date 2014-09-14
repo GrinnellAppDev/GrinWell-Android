@@ -22,6 +22,7 @@ public class HomeActivity extends Activity {
         startActivity(intent);
     }
 
+    /*
     public void clickEat() {
         Intent intent = new Intent(HomeActivity.this, EatActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -46,7 +47,7 @@ public class HomeActivity extends Activity {
         startActivity(intent);
 
     }
-
+*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
