@@ -1,16 +1,17 @@
 package edu.grinnellappdev.grinwell_android;
 
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -52,16 +53,17 @@ public class SignupActivity extends ActionBarActivity {
                     if (usernameText.equals("") || passwordText.equals("") || emailText.equals("")) {
                         errorDialog("Please make sure all fields are provided");
                     }
-                    //else if password too short
-                    else if (passwordText.length() < 8) {
-                        errorDialog("password must be at least 8 characters");
-                    }
-                    //else entries are valid
+
+                    //else all entries are valid
                     else {
                         ParseUser newUser = new ParseUser();
                         newUser.setUsername(usernameText);
                         newUser.setPassword(passwordText);
                         newUser.setEmail(emailText);
+
+                        ParseACL defaultACL = new ParseACL();
+                        defaultACL.setPublicReadAccess(true);
+                        newUser.setACL(defaultACL);
 
                         newUser.signUpInBackground(new SignUpCallback() {
                             @Override
