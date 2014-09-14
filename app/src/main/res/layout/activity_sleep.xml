@@ -6,35 +6,41 @@
 
 
     <TextView
+        android:id="@+id/introPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="For how long did you sleep?"
-        android:id="@+id/introPrompt" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
+        android:id="@+id/startPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Start TIme:"
-        android:id="@+id/startPrompt" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TimePicker
+        android:id="@+id/timePicker_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/timePicker_start" />
+        android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/endPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/endPrompt" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TimePicker
+        android:id="@+id/timePicker_end"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/imageButton_move"
+        android:layout_width="95dip"
         android:layout_height="wrap_content"
-        android:id="@+id/timePicker_end" />
+        android:onClick="clickMove"/>
 
 
 </LinearLayout>

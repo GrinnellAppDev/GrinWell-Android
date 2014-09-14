@@ -30,6 +30,11 @@
             android:label="@string/title_activity_login" >
         </activity>
 
+        <activity
+            android:name=".SleepActivity"
+            android:label="@string/title_activity_sleep" >
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
