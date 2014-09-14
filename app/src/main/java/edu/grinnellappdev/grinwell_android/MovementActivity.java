@@ -1,45 +1,36 @@
 package edu.grinnellappdev.grinwell_android;
 
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TimePicker;
 
 
-public class SleepActivity extends Activity {
-
-    TimePicker startTime;
-    TimePicker endTime;
+public class MovementActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sleep);
-
-        startTime = (TimePicker) findViewById(R.id.timePicker_start);
-        endTime = (TimePicker) findViewById(R.id.timePicker_end);
+        setContentView(R.layout.activity_movement);
     }
 
-    public void publicSubmit(){
-        int hoursSlept = endTime.getCurrentHour() - startTime.getCurrentHour();
-        if (hoursSlept<0) { hoursSlept += 24; }
+    public void add15(){
 
-        int minutesSlept = endTime.getCurrentMinute() - startTime.getCurrentMinute();
-        if (minutesSlept<0) {
-            minutesSlept += 60;
-            hoursSlept -= 1;
-        }
+    }
 
-        //send the sleep info to parse
+    public void add30(){
+
+    }
+
+    public void clickSubmit(){
+        //send info to parse
         finish();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.sleep, menu);
+        getMenuInflater().inflate(R.menu.movement, menu);
         return true;
     }
 
@@ -54,5 +45,4 @@ public class SleepActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

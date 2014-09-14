@@ -9,28 +9,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="15 min"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/button_add15"
+        android:layout_gravity="center_horizontal"
+        android:onClick="add15"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="30 min"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/button_add30"
+        android:layout_gravity="center_horizontal"
+        android:onClick="add30" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="You'ce exercised for 0 minutes today."
-        android:id="@+id/textView"
+        android:id="@+id/textView_counter"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/button3"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/button_submit"
+        android:layout_gravity="center_horizontal"
+        android:onClick="clickSubmit"/>
 </LinearLayout>
