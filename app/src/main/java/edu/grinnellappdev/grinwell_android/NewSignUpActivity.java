@@ -45,7 +45,9 @@ public class NewSignUpActivity extends ActionBarActivity {
                 passwordText = password.getText().toString();
                 emailText = email.getText().toString();
                 //if one or more fields are empty
+
                 if (passwordText.equals("") || emailText.equals("")) {
+                    //todo: refactor string
                     errorDialog("Please make sure all fields are provided");
                 }
 
@@ -67,7 +69,7 @@ public class NewSignUpActivity extends ActionBarActivity {
                                 //start feed intent
                                 Intent intent = new Intent(NewSignUpActivity.this, HomeActivity.class);
                                 startActivity(intent);
-                                //TODO: finish not working as expected
+                                //todo:.....>>>>>>
                                 finish();
                             }//if (e ==null)
                             else {
