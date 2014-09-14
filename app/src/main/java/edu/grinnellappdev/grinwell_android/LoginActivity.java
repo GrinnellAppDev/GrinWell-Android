@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
+
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -20,6 +22,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        ParseUser user = ParseUser.getCurrentUser();
 
     }
+}
