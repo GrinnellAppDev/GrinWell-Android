@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class RelaxActivity extends ActionBarActivity {
 
-    int counter = 0 //TODO: THIS SHOULD PULL FROM PARSE
+    int counter = 0; //TODO: THIS SHOULD PULL FROM PARSE
     TextView textviewCounter;
 
     @Override
