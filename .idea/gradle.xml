@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$USER_HOME$/Workspace/GrinWell-Android" />
+            <option value="$USER_HOME$/Workspace/GrinWell-Android/app" />
           </set>
         </option>
       </GradleProjectSettings>
