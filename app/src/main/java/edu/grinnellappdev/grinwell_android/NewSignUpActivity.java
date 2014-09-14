@@ -1,8 +1,8 @@
 package edu.grinnellappdev.grinwell_android;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +16,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class NewSignUpActivity extends ActionBarActivity {
+public class NewSignUpActivity extends Activity {
 
     //variable declaration
     EditText password;
@@ -41,11 +41,12 @@ public class NewSignUpActivity extends ActionBarActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //get values
                 passwordText = password.getText().toString();
                 emailText = email.getText().toString();
-                //if one or more fields are empty
 
+                // if one or more fields are empty
                 if (passwordText.equals("") || emailText.equals("")) {
                     //todo: refactor string
                     errorDialog("Please make sure all fields are provided");
