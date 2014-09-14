@@ -12,7 +12,6 @@
         android:layout_height="142dp"
         android:text="I ate a fruit or vegitable"
         android:id="@+id/button_addFruitVeg"
-        android:onClick="clickAdd"
         />
 
     <TextView
@@ -28,8 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:id="@+id/button_submit"
-        android:layout_gravity="center_horizontal"
-        android:onClick="clickSubmit"/>
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
 

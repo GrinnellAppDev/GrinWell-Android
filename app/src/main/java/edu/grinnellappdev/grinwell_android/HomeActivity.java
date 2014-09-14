@@ -5,6 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+
+import static edu.grinnellappdev.grinwell_android.R.id.imageButton_eat;
+import static edu.grinnellappdev.grinwell_android.R.id.imageButton_move;
+import static edu.grinnellappdev.grinwell_android.R.id.imageButton_relax;
+import static edu.grinnellappdev.grinwell_android.R.id.imageButton_sleep;
 
 
 public class HomeActivity extends Activity {
@@ -13,38 +20,40 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-    }
 
-    public void clickSleep() {
-        Intent intent = new Intent(HomeActivity.this, SleepActivity.class);
-        startActivity(intent);
-        finish();
-    }
+        //Get The Button(s)
+        ImageButton clickSleep = (ImageButton) findViewById(imageButton_sleep);
+        clickSleep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, SleepActivity.class));
+            }
+        });
 
+        ImageButton clickEat = (ImageButton) findViewById(imageButton_eat);
+        clickEat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, EatActivity.class));
+            }
+        });
 
-    public void clickEat() {
-        Intent intent = new Intent(HomeActivity.this, EatActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        ImageButton clickRelax = (ImageButton) findViewById(imageButton_relax);
+        clickEat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view) {
+                startActivity(new Intent(HomeActivity.this, RelaxActivity.class));
+            }
+        });
 
-    }
+        ImageButton clickMove = (ImageButton) findViewById(imageButton_move);
+        clickEat.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view) {
+                startActivity(new Intent(HomeActivity.this, MovementActivity.class));
+            }
+        });
 
-
-    public void clickRelax() {
-        Intent intent = new Intent(HomeActivity.this, RelaxActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-
-    }
-
-
-    public void clickMove() {
-        Intent intent = new Intent(HomeActivity.this, MovementActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
 
     }
 
@@ -65,4 +74,5 @@ public class HomeActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

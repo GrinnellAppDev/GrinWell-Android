@@ -9,27 +9,23 @@
         android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_sleep"
-        android:src="@drawable/sleep"
-        android:onClick="clickSleep"/>
+        android:src="@drawable/sleep"/>
 
     <ImageButton
         android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_eat"
-        android:src="@drawable/silverware"
-        android:onClick="clickEat"/>
+        android:src="@drawable/silverware"/>
 
     <ImageButton
         android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_relax"
-        android:src="@drawable/book"
-        android:onClick="clickRelax" />
+        android:src="@drawable/book" />
 
     <ImageButton
         android:layout_width="95dip"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton_move"
-        android:src="@drawable/run"
-        android:onClick="clickMove" />
+        android:src="@drawable/run" />
 </LinearLayout>

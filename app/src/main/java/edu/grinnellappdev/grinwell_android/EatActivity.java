@@ -4,31 +4,30 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 
 public class EatActivity extends Activity {
 
     int counter = 0;//TODO: THIS SHOULD PULL FROM PARSE
-    TextView textviewCounter;
+    //TextView textviewCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eat);
-        textviewCounter = (TextView) findViewById(R.id.textView_counter);
+    //    textviewCounter = (TextView) findViewById(R.id.textView_counter);
     }
 
-   public void clickAdd(){
-       counter++;
-       textviewCounter.setText("You've eaten " + counter + " piece(s) of fruit today.");
-   }
-
-
-    public void clickSubmit(){
-        //send the sleep info to parse
-        finish();
-    }
+//   public void clickAdd(){
+//       counter++;
+//       textviewCounter.setText("You've eaten " + counter + " piece(s) of fruit today.");
+//   }
+//
+//
+//    public void clickSubmit(){
+//        //send the sleep info to parse
+//        finish();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

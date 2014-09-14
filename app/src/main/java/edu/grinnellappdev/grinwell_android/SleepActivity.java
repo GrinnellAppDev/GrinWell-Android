@@ -16,6 +16,8 @@ public class SleepActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
+    
+
 
         startTime = (TimePicker) findViewById(R.id.timePicker_start);
         endTime = (TimePicker) findViewById(R.id.timePicker_end);
