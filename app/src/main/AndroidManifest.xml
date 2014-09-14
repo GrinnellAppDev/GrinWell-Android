@@ -24,6 +24,10 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
+        <activity
+            android:name=".SleepActivity"
+            android:label="@string/title_activity_sleep" >
+        </activity>
     </application>
 
 </manifest>
