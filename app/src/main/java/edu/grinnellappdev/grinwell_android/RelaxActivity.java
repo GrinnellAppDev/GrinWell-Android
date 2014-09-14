@@ -26,13 +26,11 @@ public class RelaxActivity extends ActionBarActivity {
 
     public void onClick(){
         //send to parse
-        finish()
+        finish();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.relax, menu);
         return true;
     }
 
