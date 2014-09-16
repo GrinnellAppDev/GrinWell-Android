@@ -34,23 +34,23 @@ public class HomeActivity extends Activity {
         clickEat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, EatActivity.class));
+                startActivity(new Intent(HomeActivity.this, NewEatActivity.class));
             }
         });
 
         ImageButton clickRelax = (ImageButton) findViewById(imageButton_relax);
-        clickEat.setOnClickListener(new View.OnClickListener(){
+        clickRelax.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view) {
-                startActivity(new Intent(HomeActivity.this, RelaxActivity.class));
+                startActivity(new Intent(HomeActivity.this, NewRelaxActivity.class));
             }
         });
 
         ImageButton clickMove = (ImageButton) findViewById(imageButton_move);
-        clickEat.setOnClickListener(new View.OnClickListener(){
+        clickMove.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view) {
-                startActivity(new Intent(HomeActivity.this, MovementActivity.class));
+                startActivity(new Intent(HomeActivity.this, NewMovementActivity.class));
             }
         });
 

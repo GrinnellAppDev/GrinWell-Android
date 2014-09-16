@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.grinnellappdev.grinwell_android" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="edu.grinnellappdev.grinwell_android.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,24 +20,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name="edu.grinnellappdev.grinwell_android.HomeActivity"
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="edu.grinnellappdev.grinwell_android.LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name=".SleepActivity"
+            android:name="edu.grinnellappdev.grinwell_android.SleepActivity"
             android:label="@string/title_activity_sleep" >
         </activity>
         <activity
-            android:name=".NewSignUpActivity"
-            android:label="@string/title_activity_new_sign_up">
+            android:name="edu.grinnellappdev.grinwell_android.NewSignUpActivity"
+            android:label="@string/title_activity_new_sign_up" >
+        </activity>
+        <activity
+            android:name="edu.grinnellappdev.grinwell_android.NewMovementActivity"
+            android:label="@string/title_activity_new_movement"
+            android:parentActivityName="edu.grinnellappdev.grinwell_android.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.grinnellappdev.grinwell_android.HomeActivity" />
+        </activity>
+        <activity
+            android:name="edu.grinnellappdev.grinwell_android.NewRelaxActivity"
+            android:label="@string/title_activity_new_relax"
+            android:parentActivityName="edu.grinnellappdev.grinwell_android.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.grinnellappdev.grinwell_android.HomeActivity" />
+        </activity>
+        <activity
+            android:name="edu.grinnellappdev.grinwell_android.NewEatActivity"
+            android:label="@string/title_activity_new_eat"
+            android:parentActivityName="edu.grinnellappdev.grinwell_android.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.grinnellappdev.grinwell_android.HomeActivity" />
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
