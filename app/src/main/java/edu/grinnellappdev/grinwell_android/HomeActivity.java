@@ -7,6 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static edu.grinnellappdev.grinwell_android.R.id.imageButton_eat;
 import static edu.grinnellappdev.grinwell_android.R.id.imageButton_move;
@@ -15,6 +19,8 @@ import static edu.grinnellappdev.grinwell_android.R.id.imageButton_sleep;
 
 
 public class HomeActivity extends Activity {
+
+    TextView statsDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,13 @@ public class HomeActivity extends Activity {
             }
         });
 
+        //set today's date
+        statsDate = (TextView) findViewById(R.id.date_text_view);
+        Date now = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("MM.dd");
+        statsDate.setText(ft.format(now));
+
+        //todo: put text value into strings file
 
     }
 

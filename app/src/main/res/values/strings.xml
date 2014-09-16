@@ -12,5 +12,7 @@
     <string name="title_activity_new_movement">NewMovementActivity</string>
     <string name="title_activity_new_relax">NewRelaxActivity</string>
     <string name="title_activity_new_eat">NewEatActivity</string>
+    <string name="grinwell_text">#grinwell</string>
+    <string name="rkay_stats_text">Raynard Kingtons stats for</string>
 
 </resources>
