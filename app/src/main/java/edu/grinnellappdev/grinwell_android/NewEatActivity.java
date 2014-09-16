@@ -1,17 +1,42 @@
 package edu.grinnellappdev.grinwell_android;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 
 public class NewEatActivity extends ActionBarActivity {
+
+    ImageView vegButton;
+    ImageView fruitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_eat);
+
+        vegButton = (ImageView) findViewById(R.id.add_veg_button);
+        vegButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //increment the value of the vegies eaten
+                //update database
+            }
+        });
+
+        fruitButton = (ImageView) findViewById(R.id.add_fruit_button);
+        fruitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //increment the value of the fruits eaten
+                //update database
+            }
+        });
     }
 
 
