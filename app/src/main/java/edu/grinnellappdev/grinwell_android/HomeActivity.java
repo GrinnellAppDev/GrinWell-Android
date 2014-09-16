@@ -26,7 +26,7 @@ public class HomeActivity extends Activity {
         clickSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, SleepActivity.class));
+                startActivity(new Intent(HomeActivity.this, NewSleepActivity.class));
             }
         });
 

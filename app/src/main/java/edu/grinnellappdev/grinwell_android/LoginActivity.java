@@ -85,6 +85,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, NewSignUpActivity.class));
+                finish();
             }
         });
     }//protected void onCreate

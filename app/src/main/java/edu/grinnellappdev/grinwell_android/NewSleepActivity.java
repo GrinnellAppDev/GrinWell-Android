@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.TimePicker;
 
 
-public class SleepActivity extends Activity {
+public class NewSleepActivity extends Activity {
 
     TimePicker startTime;
     TimePicker endTime;
