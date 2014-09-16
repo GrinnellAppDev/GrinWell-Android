@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
 
         //Get The Button(s)
-        ImageButton clickSleep = (ImageButton) findViewById(imageButton_sleep);
+        ImageView clickSleep = (ImageView) findViewById(imageButton_sleep);
         clickSleep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +36,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        ImageButton clickEat = (ImageButton) findViewById(imageButton_eat);
+        ImageView clickEat = (ImageView) findViewById(imageButton_eat);
         clickEat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +44,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        ImageButton clickRelax = (ImageButton) findViewById(imageButton_relax);
+        ImageView clickRelax = (ImageView) findViewById(imageButton_relax);
         clickRelax.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view) {
@@ -52,7 +52,7 @@ public class HomeActivity extends Activity {
             }
         });
 
-        ImageButton clickMove = (ImageButton) findViewById(imageButton_move);
+        ImageView clickMove = (ImageView) findViewById(imageButton_move);
         clickMove.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view) {
