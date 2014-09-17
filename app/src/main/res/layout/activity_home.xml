@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:id="@+id/linearLayout">
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="wrap_content"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_gravity="center_vertical"
             android:id="@+id/imageButton_sleep"
-            android:src="@drawable/sleep"/>
+            android:src="@drawable/moveicon"
+            android:layout_margin="3dp"/>
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="wrap_content"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_gravity="center_vertical"
             android:id="@+id/imageButton_eat"
-            android:src="@drawable/silverware"/>
+            android:src="@drawable/healthyicon"
+            android:layout_margin="3dp"/>
 
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="wrap_content"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_gravity="center_vertical"
             android:id="@+id/imageButton_relax"
-            android:src="@drawable/book" />
+            android:src="@drawable/sleepicon"
+            android:layout_margin="3dp"/>
 
         <ImageView
-            android:layout_width="90dip"
-            android:layout_height="wrap_content"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_gravity="center_vertical"
             android:id="@+id/imageButton_move"
-            android:src="@drawable/run" />
+            android:src="@drawable/restoreicon"
+            android:layout_margin="3dp"/>
 
         </LinearLayout>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -46,8 +56,7 @@
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:textSize="45dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="normal|bold|"/>
+        fontName="RobotoCondensed-Regular.ttf"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,27 +68,28 @@
         android:textSize="20dp"
         android:fontFamily="sans-serif-condensed"/>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
+        android:layout_marginBottom="10dp"
         android:id="@+id/date_text_view"
         android:layout_below="@+id/rayk_stats_textView"
         android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="30dp"/>
+        android:textSize="35dp"
+        fontName="RobotoCondensed-Regular.ttf"/>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView15"
         android:id="@+id/relativeLayout">
 
-        <TextView
+        <edu.grinnellappdev.grinwell_android.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Stats"
             android:id="@+id/textView19"
             android:layout_centerVertical="true"
@@ -87,57 +97,55 @@
             android:layout_alignParentStart="true"
             android:layout_marginLeft="27dp"
             android:textSize="35dp"
-            android:fontFamily="sans-serif-condensed"
-            android:textStyle="normal|bold|"/>
+            app:fontName="Roboto-Regular.ttf"/>
     </RelativeLayout>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_height="50dp"
         android:text="Restore: Complete"
         android:id="@+id/textView15"
-        android:layout_above="@+id/relativeLayout"
+        android:layout_below="@+id/textView16"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textSize="35dp"
-        android:background="#324"/>
+        android:textSize="25dp"
+        android:background="#989898"
+        fontName="Roboto-Regular.ttf"/>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_height="50dp"
         android:text="Sleep: 9hr/8hr"
         android:id="@+id/textView16"
-        android:layout_above="@+id/textView15"
+        android:layout_below="@+id/textView17"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textSize="35dp"
-        android:background="#234"/>
+        android:textSize="25dp"
+        android:background="#ABAAAB"
+        fontName="Roboto-Regular.ttf"/>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_height="50dp"
         android:text="Eat: 5/5"
         android:id="@+id/textView17"
-        android:layout_above="@+id/textView16"
+        android:layout_below="@+id/textView18"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textSize="35dp"
-        android:background="#8767"/>
+        android:textSize="25dp"
+        android:background="#C5C5C5"
+        fontName="Roboto-Regular.ttf"/>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_height="50dp"
         android:text="Move: 0/30"
         android:id="@+id/textView18"
-        android:layout_above="@+id/textView17"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/date_text_view"
         android:gravity="center"
-        android:textSize="35dp"
-        android:background="#476"/>
+        android:textSize="25dp"
+        android:background="#D6D5D6"
+        fontName="Roboto-Regular.ttf"/>
 
 
 </RelativeLayout>

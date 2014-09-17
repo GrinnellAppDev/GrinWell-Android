@@ -24,4 +24,5 @@ dependencies {
     compile files('/home/sbl/Workspace/GrinWell-Android/libs/Parse-1.6.0.jar')
     compile files('/Users/mataires/AndroidStudioProjects/GrinWell-Android/libs/Parse-1.6.0.jar')
     compile 'com.android.support:appcompat-v7:20.0.0'
+    compile files('/Users/samee/AndroidstudioProjects/GrinWell-Android/libs/Parse-1.6.0.jar')
 }

@@ -63,8 +63,9 @@ public class HomeActivity extends Activity {
         //set today's date
         statsDate = (TextView) findViewById(R.id.date_text_view);
         Date now = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("MM.dd");
+        SimpleDateFormat ft = new SimpleDateFormat("LLL.dd");
         statsDate.setText(ft.format(now));
+
 
         //todo: put text value into strings file
 
