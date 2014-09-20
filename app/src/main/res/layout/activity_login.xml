@@ -1,48 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/login_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#grinwell"
+        android:textSize="60sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        app:fontName="Roboto-Regular.ttf"
+        android:textColor="#D50000"/>
     <EditText
-        android:layout_width="match_parent"
+        style="@style/_GrinWellTheme"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText_username"
-        android:layout_weight="1"
-        android:hint="username"
-        android:layout_marginTop="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/editText_email"
+        android:hint="email"
+        android:gravity="center"
+        android:textColorHighlight="#D50000"
+        android:layout_below="@+id/login_header"
+        android:layout_marginTop="44dp"
+        android:layout_centerHorizontal="true">
+    <requestFocus />
+    </EditText>
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
+        android:gravity="center"
         android:id="@+id/editText_password"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
         android:hint="password"
-        android:layout_below="@+id/editText_username"
-        android:layout_marginTop="75dp"
+        android:layout_below="@+id/editText_email"
+        android:layout_marginTop="35dp"
         android:layout_centerHorizontal="true" />
 
-    <Button
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:id="@+id/button_signin"
-        android:layout_above="@+id/button_signup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="127dp" />
+        android:layout_below="@id/editText_password">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:id="@+id/button_signup"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+    <FrameLayout
+        android:id="@+id/signup_button"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/light_rect2">
+
+            <edu.grinnellappdev.grinwell_android.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="Sign Up"
+                android:layout_gravity="center"
+                android:textColor="#FFFFFF"
+                app:fontName="RobotoCondensed-Regular.ttf"/>
+
+        </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/login_button"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_margin="30dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/dark_rect">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Sign In"
+            android:layout_gravity="center"
+            android:textColor="#FFFFFF"
+            app:fontName="RobotoCondensed-Regular.ttf"/>
+
+     </FrameLayout>
+
+    </RelativeLayout>
+
 </RelativeLayout>

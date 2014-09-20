@@ -1,48 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/introPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="For how long did you sleep?"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+  <FrameLayout
+      android:layout_marginTop="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="160dp">
 
-    <TextView
-        android:id="@+id/startPrompt"
+
+<FrameLayout
+    android:layout_width="210dp"
+    android:layout_height="80dp"
+    android:background="#00829c">
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Time:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="fell asleep"
+        app:fontName="Roboto-Regular.ttf"
+        android:textColor="#7ee7fd"
+        android:textSize="42sp"
+        android:layout_gravity="center"/>
+
+
+    </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:layout_marginLeft="210dp"
+          android:background="#3BD2F0">
+          <edu.grinnellappdev.grinwell_android.CustomTextView
+              android:id="@+id/asleepTime"
+              android:text="10:29 PM"
+              app:fontName="Roboto-Regular.ttf"
+              android:textSize="32sp"
+              android:textColor="#FFFFFF"
+              android:layout_gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+             />
+
+
+      </FrameLayout>
+
+
+      <FrameLayout
+          android:layout_width="210dp"
+          android:layout_height="80dp"
+          android:layout_marginTop="80dp"
+          android:background="#004c5b">
+          <edu.grinnellappdev.grinwell_android.CustomTextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="woke up"
+              app:fontName="Roboto-Regular.ttf"
+              android:textColor="#7ee7fd"
+              android:textSize="42sp"
+              android:layout_gravity="center"/>
+
+
+      </FrameLayout>
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:layout_marginTop="80dp"
+          android:layout_marginLeft="210dp"
+          android:background="#2490A4">
+          <edu.grinnellappdev.grinwell_android.CustomTextView
+              android:id="@+id/wakeTime"
+              android:text="7:30 AM"
+              android:textSize="32sp"
+              android:textColor="#FFFFFF"
+              app:fontName="Roboto-Regular.ttf"
+              android:layout_gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" />
+
+
+      </FrameLayout>
+
+
+
+
+
+
+
+
+      </FrameLayout>
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/Prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#004c5b"
+        android:layout_marginBottom="35dp"
+        android:layout_gravity="center"
+        android:text="When did you fall asleep?" />
+
 
     <TimePicker
-        android:id="@+id/timePicker_start"
-        android:layout_width="wrap_content"
+        android:id="@+id/timePicker"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="74dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/endPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="End Time"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TimePicker
-        android:id="@+id/timePicker_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button_submit"
-        android:layout_gravity="center_horizontal"
-        android:onClick="clickSubmit"/>
+  <FrameLayout
+        android:id="@+id/setButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:clickable="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/set_button">
 
 
-</LinearLayout>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Set"/>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#3BD2F0"
+            android:layout_gravity="top"/>
+
+    </FrameLayout>
+
+
+</FrameLayout>

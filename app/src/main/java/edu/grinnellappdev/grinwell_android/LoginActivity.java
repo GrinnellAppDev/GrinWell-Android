@@ -1,8 +1,5 @@
 package edu.grinnellappdev.grinwell_android;
 
-/**
- * Created by Michael on 9/13/14.
- */
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,8 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -20,12 +17,12 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends Activity {
     //Variable declaration
-    EditText username;
+    EditText email;
     EditText password;
-    String usernameText;
+    String emailText;
     String passwordText;
-    Button logInButton;
-    Button signUpButton;
+    FrameLayout logInButton;
+    FrameLayout signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +31,11 @@ public class LoginActivity extends Activity {
 
 
         //Get The EditText(s)
-        username = (EditText) findViewById(R.id.editText_username);
+        email = (EditText) findViewById(R.id.editText_email);
         password = (EditText) findViewById(R.id.editText_password);
 
         //Get The Button(s)
-        logInButton = (Button) findViewById(R.id.button_signin);
+        logInButton = (FrameLayout) findViewById(R.id.login_button);
 
 
         //Log in action
@@ -46,10 +43,10 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //get input values
-                usernameText = username.getText().toString();
+                emailText = email.getText().toString();
                 passwordText = password.getText().toString();
                 //send to parse
-                ParseUser.logInInBackground(usernameText, passwordText, new LogInCallback() {
+                ParseUser.logInInBackground(emailText, passwordText, new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
                         if (parseUser != null) {
@@ -80,7 +77,7 @@ public class LoginActivity extends Activity {
         );
 
         //signup button onClick
-        signUpButton = (Button) findViewById(R.id.button_signup);
+        signUpButton = (FrameLayout) findViewById(R.id.signup_button);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

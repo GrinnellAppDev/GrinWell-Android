@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -60,14 +63,21 @@ public class HomeActivity extends Activity {
             }
         });
 
+        Button logout = (Button) findViewById(R.id.button);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ParseUser user = ParseUser.getCurrentUser();
+                user.logOut();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            }
+        });
+
         //set today's date
         statsDate = (TextView) findViewById(R.id.date_text_view);
         Date now = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("LLL.dd");
         statsDate.setText(ft.format(now));
-
-
-        //todo: put text value into strings file
 
     }
 
