@@ -1,34 +1,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.grinnellappdev.grinwell_android.NewEatActivity">
 
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView"
+        android:text="0/5"
+        android:padding="10dp"
+        android:id="@+id/total_eaten"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        app:fontName="Roboto-Regular.ttf"
         android:gravity="center"
         android:textSize="45dp"
-        android:fontFamily="sans-serif-condensed"
         android:background="#80B280"/>
 
-    <TextView
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/total_text"
+        android:text="total"
+        app:fontName="Roboto-Bold.ttf"
+        android:padding="10dp"
         android:id="@+id/textView2"
-        android:layout_above="@+id/textView"
+        android:layout_above="@+id/total_eaten"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textSize="45dp"
-        android:fontFamily="sans-serif-condensed"
+        android:textSize="45sp"
         android:background="#006600"
         android:textColor="#FFFFFF"/>
 
@@ -38,8 +40,10 @@
         android:id="@+id/add_veg_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/ic_launcher"/>
+        android:layout_marginTop="25dp"
+        android:padding="25dp"
+        android:background="@drawable/circle_dark"
+        android:src="@drawable/carrot"/>
 
     <ImageView
         android:layout_width="150dp"
@@ -47,6 +51,8 @@
         android:id="@+id/add_fruit_button"
         android:layout_below="@+id/add_veg_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_launcher"/>
+        android:layout_marginTop="25dp"
+        android:padding="25dp"
+        android:background="@drawable/circle_light"
+        android:src="@drawable/apple"/>
 </RelativeLayout>

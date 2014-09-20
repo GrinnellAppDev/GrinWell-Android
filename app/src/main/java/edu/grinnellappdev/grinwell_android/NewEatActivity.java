@@ -6,24 +6,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class NewEatActivity extends ActionBarActivity {
 
-    ImageView vegButton;
-    ImageView fruitButton;
+    ImageView vegButton, fruitButton;
+    TextView mTotal;
+    int numVeg = 0;
+    int numFruit = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_eat);
 
+        getActionBar().hide();
+
+
+
+        mTotal = (TextView) findViewById(R.id.total_eaten);
         vegButton = (ImageView) findViewById(R.id.add_veg_button);
         vegButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                numVeg++;
+                mTotal.setText((numFruit + numVeg) + "/5");
 
-                //increment the value of the vegies eaten
                 //update database
             }
         });
@@ -33,8 +42,8 @@ public class NewEatActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                //increment the value of the fruits eaten
-                //update database
+                numFruit++;
+                mTotal.setText((numFruit + numVeg) + "/5");
             }
         });
     }

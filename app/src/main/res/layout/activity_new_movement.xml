@@ -1,16 +1,465 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="edu.grinnellappdev.grinwell_android.NewMovementActivity">
 
-    <TextView
-        android:text="@string/hello_world"
+   <edu.grinnellappdev.grinwell_android.CustomTextView
+       android:id="@+id/walking_text"
+       android:layout_width="220dp"
+       android:layout_height="wrap_content"
+       android:text="walking"
+       android:textColor="#FCFFA2"
+       android:textSize="40sp"
+       android:background="#76761D"
+       android:paddingTop="10dp"
+       app:fontName="Roboto-Regular.ttf"
+       android:paddingBottom="10dp"
+       android:paddingLeft="35dp"
+       android:paddingRight="35dp"/>
+
+    <FrameLayout
+        android:id="@+id/walking_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/walking_text"
+        android:background="#5A5A16"
+        android:layout_alignTop="@+id/walking_text"
+        android:layout_alignBottom="@+id/walking_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+        </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/walking_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/walking_15"
+        android:background="#3a3b0D"
+        android:layout_alignTop="@+id/walking_text"
+        android:layout_alignBottom="@+id/walking_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/running_text"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="running"
+        android:textSize="40sp"
+        android:textColor="#FCFFA2"
+        android:background="#A1A031"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        app:fontName="Roboto-Regular.ttf"
+        android:paddingRight="35dp"
+        android:layout_below="@id/walking_text"/>
+
+
+    <FrameLayout
+        android:id="@+id/running_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/running_text"
+        android:background="#7C7A1F"
+        android:layout_alignTop="@+id/running_text"
+        android:layout_alignBottom="@+id/running_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/running_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/running_15"
+        android:background="#5C5C1A"
+        android:layout_alignTop="@+id/running_text"
+        android:layout_alignBottom="@+id/running_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FCFF9E"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/dancing_text"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="dancing"
+        android:textColor="#4A4A11"
+        android:textSize="40sp"
+        android:background="#C1BF36"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        app:fontName="Roboto-Regular.ttf"
+        android:paddingRight="35dp"
+        android:layout_below="@id/running_text"/>
+
+    <FrameLayout
+        android:id="@+id/dancing_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dancing_text"
+        android:background="#949326"
+        android:layout_alignTop="@+id/dancing_text"
+        android:layout_alignBottom="@+id/dancing_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dancing_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/dancing_15"
+        android:background="#74731f"
+        android:layout_alignTop="@+id/dancing_text"
+        android:layout_alignBottom="@+id/dancing_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+
+
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/swimming_text"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="swimming"
+        android:textColor="#494A17"
+        android:textSize="40sp"
+        android:background="#EBE95C"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/dancing_text"/>
+
+    <FrameLayout
+        android:id="@+id/swimming_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/swimming_text"
+        android:background="#AFAC3C"
+        android:layout_alignTop="@+id/swimming_text"
+        android:layout_alignBottom="@+id/swimming_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/swimming_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/swimming_15"
+        android:background="#959022"
+        android:layout_alignTop="@+id/swimming_text"
+        android:layout_alignBottom="@+id/swimming_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/biking_text"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="biking"
+        android:textColor="#3A3B0D"
+        android:textSize="40sp"
+        android:background="#FCFFA2"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="45dp"
+        app:fontName="Roboto-Regular.ttf"
+        android:paddingRight="45dp"
+        android:layout_below="@id/swimming_text"/>
+
+
+    <FrameLayout
+        android:id="@+id/biking_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/biking_text"
+        android:background="#E7E259"
+        android:layout_alignTop="@+id/biking_text"
+        android:layout_alignBottom="@+id/biking_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/biking_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/biking_15"
+        android:background="#D5D052"
+        android:layout_alignTop="@+id/biking_text"
+        android:layout_alignBottom="@+id/biking_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/other_text"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="other"
+        android:textColor="#31310E"
+        android:textSize="40sp"
+        android:background="#FDFFD1"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="45dp"
+        app:fontName="Roboto-Regular.ttf"
+        android:paddingRight="45dp"
+        android:layout_below="@id/biking_text"/>
+
+    <FrameLayout
+        android:id="@+id/other_15"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/other_text"
+        android:background="#FCFF9E"
+        android:layout_alignTop="@+id/other_text"
+        android:layout_alignBottom="@+id/other_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="15"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4a4a11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/other_30"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/other_15"
+        android:background="#FCFB66"
+        android:layout_alignTop="@+id/other_text"
+        android:layout_alignBottom="@+id/other_text">
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="30"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4A4A11"
+            android:text="min"
+            android:textSize="22sp"
+            android:layout_gravity="bottom|center_horizontal"/>
+    </FrameLayout>
+
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#292A16"
+        android:text="total:"
+        android:textSize="50sp"
+        android:id="@+id/movmt_total_label"
+        app:fontName="Roboto-Bold.ttf"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/other_text" />
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#949326"
+        android:text="0 hrs"
+        android:textSize="40sp"
+        android:id="@+id/mvmt_total"
+        app:fontName="Roboto-Light.ttf"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/movmt_total_label" />
+
 
 </RelativeLayout>

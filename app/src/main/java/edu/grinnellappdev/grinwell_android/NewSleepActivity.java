@@ -16,6 +16,7 @@ public class NewSleepActivity extends Activity {
     TextView mPrompt, mWakeTime, mSleepTime;
     FrameLayout mSetButton;
     String AmPm, mSleepHour, mSleepMin, mWakeHour, mWakeMin;
+    int mClick = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,34 +36,76 @@ public class NewSleepActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                mSleepHour = mPicker.getCurrentHour().toString();
-                mSleepMin = mPicker.getCurrentMinute().toString();
+                mClick ++ ;
 
-                AmPm = (Integer.valueOf(mSleepHour) < 12) ? "AM" : "PM";
-                mSleepMin = (Integer.valueOf(mSleepMin) < 10) ? 0 + mSleepMin: mSleepMin;
-                mSleepHour = String.valueOf(Integer.valueOf(mSleepHour) % 12);
+                if (mClick == 1) {
 
-                mSleepTime.setText(mSleepHour + ":" + mSleepMin + " " + AmPm);
 
-                mPicker.setCurrentHour(0);
-                mPicker.setCurrentMinute(0);
+                    mSleepHour = mPicker.getCurrentHour().toString();
+                    mSleepMin = mPicker.getCurrentMinute().toString();
+
+                    String sleepMinString = (Integer.valueOf(mSleepMin) < 10) ? 0 + mSleepMin : mSleepMin;
+                    String sleepHourString =  String.valueOf(Integer.valueOf(mSleepHour) % 12);
+                    AmPm = (Integer.valueOf(mSleepHour) < 12) ? "AM" : "PM";
+
+                    mSleepTime.setText(sleepHourString + ":" + sleepMinString + " " + AmPm);
+
+                    mPicker.setCurrentHour(0);
+                    mPicker.setCurrentMinute(0);
+
+                    mPrompt.setText("What time did you wake up?");
+
+                } else if (mClick == 2){
+
+                    mWakeHour = mPicker.getCurrentHour().toString();
+                    mWakeMin = mPicker.getCurrentMinute().toString();
+
+
+                    String wakeHourString =  String.valueOf(Integer.valueOf(mWakeHour) % 12);
+                    String wakeMinString = (Integer.valueOf(mWakeMin) < 10) ? 0 + mWakeMin : mWakeMin;
+                    AmPm = (Integer.valueOf(mWakeHour) < 12) ? "AM" : "PM";
+
+                    mWakeTime.setText( wakeHourString + ":" +   wakeMinString + " " + AmPm);
+
+                    mPicker.setCurrentHour(0);
+                    mPicker.setCurrentMinute(0);
+
+
+
+                   String timeSlept = calculateTime(Integer.parseInt(mSleepHour), Integer.parseInt(mSleepMin),
+                            Integer.parseInt(mWakeHour), Integer.parseInt(mWakeMin));
+
+
+                    mPrompt.setText("You slept for:" + timeSlept);
+
+                }
             }
         });
     }
 
     public void publicSubmit(){
-//        int hoursSlept = endTime.getCurrentHour() - startTime.getCurrentHour();
-//        if (hoursSlept<0) { hoursSlept += 24; }
-//
-//        int minutesSlept = endTime.getCurrentMinute() - startTime.getCurrentMinute();
-//        if (minutesSlept<0) {
-//            minutesSlept += 60;
-//            hoursSlept -= 1;
-//        }
 
-        //send the sleep info to parse
+
         finish();
     }
+
+
+    public String calculateTime(int startHour, int startMin, int endHour, int endMin){
+
+
+        int hoursSlept = (24 - startHour) + endHour;
+        int minsSlept = (startMin - 60) + endMin;
+
+        hoursSlept = (minsSlept < 0) ? hoursSlept - 1 : hoursSlept;
+        minsSlept = Math.abs(minsSlept);
+
+        String endRes = hoursSlept + " hours and " + minsSlept + " minute";
+        endRes = (minsSlept > 1) ? endRes + "s": endRes;
+
+        return endRes;
+    }
+
+
 
 
     @Override
