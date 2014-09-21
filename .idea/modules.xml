@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/GrinWell-Android.iml" filepath="$PROJECT_DIR$/GrinWell-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$USER_HOME$/Workspace/GrinWell-Android/app/app.iml" filepath="$USER_HOME$/Workspace/GrinWell-Android/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>
 </project>

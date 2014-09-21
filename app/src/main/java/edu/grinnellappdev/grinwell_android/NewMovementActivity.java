@@ -197,13 +197,15 @@ public class NewMovementActivity extends Activity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
 
-                data.put("MovementAmount",total );
-                data.saveInBackground();
+                if (e ==null) {
+                    data.put("MovementAmount", total);
+                    data.saveInBackground();
+                }
 
             }
         });

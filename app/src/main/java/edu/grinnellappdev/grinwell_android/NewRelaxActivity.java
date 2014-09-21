@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -77,6 +78,14 @@ public class NewRelaxActivity extends ActionBarActivity {
             }
         });
 
+        mOther = (TextView) findViewById(R.id.relax_other);
+        mOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save();
+            }
+        });
+
 
 
 
@@ -91,18 +100,26 @@ public class NewRelaxActivity extends ActionBarActivity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
                 @Override
                 public void done(ParseObject data, ParseException e) {
 
-                    data.put("WellnessActivity", true);
-                    data.saveInBackground();
-
+                    if (e == null) {
+                        data.put("WellnessActivity", true);
+                        data.saveInBackground();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+                    }
                 }
             });
 
-        startActivity(new Intent(NewRelaxActivity.this, HomeActivity.class));
+        Intent intent = new Intent(NewRelaxActivity.this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
         finish();
 
 

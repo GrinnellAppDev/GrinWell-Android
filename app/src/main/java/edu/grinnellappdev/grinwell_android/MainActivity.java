@@ -24,6 +24,9 @@ public class MainActivity extends Activity {
         Parse.initialize(this, "lZHvycY7GTVgeq52BwD1fFHlNUKHlMsrN5lrmBUm", "zRCIHNyIYcm2VEPbOgOqrSkkLVFtZOb4vTF9j1Na");
         ParseAnalytics.trackAppOpened(getIntent());
 
+
+
+
         user = ParseUser.getCurrentUser();
 
         //TODO: navigate to login page

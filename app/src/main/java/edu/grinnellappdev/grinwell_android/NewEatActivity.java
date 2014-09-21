@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -32,20 +33,23 @@ public class NewEatActivity extends ActionBarActivity {
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
 
-                numFruitAndVeg = data.getInt("FruitsAndVegetables");
+                if (e==null) {
+                    numFruitAndVeg = data.getInt("FruitsAndVegetables");
 
-                mTotal.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mTotal.setText(numFruitAndVeg + "/5");
-                        mProgressBar.setVisibility(View.INVISIBLE);
-                    }
-                }, 1000);
+                    mTotal.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mTotal.setText(numFruitAndVeg + "/5");
+                            mProgressBar.setVisibility(View.INVISIBLE);
+                        }
+                    }, 1000);
+
+                }
 
 
             }
@@ -81,13 +85,19 @@ public class NewEatActivity extends ActionBarActivity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
 
-                data.put("FruitsAndVegetables",total );
-                data.saveInBackground();
+
+                if (e == null) {
+                    data.put("FruitsAndVegetables", total);
+                    data.saveInBackground();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

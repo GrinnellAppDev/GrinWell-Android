@@ -34,7 +34,6 @@
           android:background="#3BD2F0">
           <edu.grinnellappdev.grinwell_android.CustomTextView
               android:id="@+id/asleepTime"
-              android:text="10:29 PM"
               app:fontName="Roboto-Regular.ttf"
               android:textSize="32sp"
               android:textColor="#FFFFFF"
@@ -72,7 +71,6 @@
           android:background="#2490A4">
           <edu.grinnellappdev.grinwell_android.CustomTextView
               android:id="@+id/wakeTime"
-              android:text="7:30 AM"
               android:textSize="32sp"
               android:textColor="#FFFFFF"
               app:fontName="Roboto-Regular.ttf"
@@ -82,12 +80,6 @@
 
 
       </FrameLayout>
-
-
-
-
-
-
 
 
       </FrameLayout>

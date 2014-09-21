@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -58,12 +62,15 @@ public class NewSleepActivity extends Activity {
                     String sleepHourString =  String.valueOf(Integer.valueOf(mSleepHour) % 12);
                     AmPm = (Integer.valueOf(mSleepHour) < 12) ? "AM" : "PM";
 
-                    mSleepTime.setText(sleepHourString + ":" + sleepMinString + " " + AmPm);
+
+                    animateFade(mSleepTime, sleepHourString + ":" + sleepMinString + " " + AmPm);
 
                     mPicker.setCurrentHour(0);
                     mPicker.setCurrentMinute(0);
 
-                    mPrompt.setText("What time did you wake up?");
+                    animateFade(mPrompt, "What time did you wake up?");
+
+//                    animateFadeIn(mPrompt, 0);
 
                 } else if (mClick == 2){
 
@@ -75,7 +82,8 @@ public class NewSleepActivity extends Activity {
                     String wakeMinString = (Integer.valueOf(mWakeMin) < 10) ? 0 + mWakeMin : mWakeMin;
                     AmPm = (Integer.valueOf(mWakeHour) < 12) ? "AM" : "PM";
 
-                    mWakeTime.setText( wakeHourString + ":" +   wakeMinString + " " + AmPm);
+
+                    animateFade(mWakeTime, wakeHourString + ":" +   wakeMinString + " " + AmPm);
 
                     mPicker.setCurrentHour(0);
                     mPicker.setCurrentMinute(0);
@@ -85,8 +93,7 @@ public class NewSleepActivity extends Activity {
                    String timeSlept = calculateTime(Integer.parseInt(mSleepHour), Integer.parseInt(mSleepMin),
                             Integer.parseInt(mWakeHour), Integer.parseInt(mWakeMin));
 
-
-                    mPrompt.setText("You slept for: " + timeSlept);
+                    animateFade(mPrompt, "You slept for: " + timeSlept);
 
                     save(finalDiffTime);
 
@@ -99,13 +106,15 @@ public class NewSleepActivity extends Activity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
 
-                data.put("Sleep", sleepAmount);
-                data.saveInBackground();
+                if (e == null) {
+                    data.put("Sleep", sleepAmount);
+                    data.saveInBackground();
+                }
 
             }
         });
@@ -118,6 +127,43 @@ public class NewSleepActivity extends Activity {
     }
 
 
+    public void animateFadeIn(View v){
+
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(500);
+        anim.setInterpolator(new AccelerateInterpolator());
+        anim.setFillAfter(true);
+
+        v.startAnimation(anim);
+    }
+
+    public void animateFade(final TextView v, final String message){
+
+        Animation anim = new AlphaAnimation( 1.0f, 0.0f);
+        anim.setDuration(500);
+        anim.setInterpolator(new DecelerateInterpolator());
+        anim.setFillAfter(true);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                animateFadeIn(v);
+                v.setText(message);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        v.startAnimation(anim);
+    }
     public String calculateTime(int startHour, int startMin, int endHour, int endMin){
 
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
