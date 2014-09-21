@@ -2,15 +2,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="edu.grinnellappdev.grinwell_android.NewRelaxActivity">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_meditation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="meditation"
+        android:gravity="center"
+        android:textColor="#bababa"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#383838"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
+
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="reading"
+        android:gravity="center"
+        android:textColor="#A0A0A0"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#D04E4B"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:layout_below="@+id/relax_meditation"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_knitting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="knitting"
+        android:gravity="center"
+        android:textColor="#838383"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#6f706f"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:layout_below="@+id/relax_reading"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="play"
+        android:gravity="center"
+        android:textColor="#6F706F"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#Fe7e79"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:layout_below="@+id/relax_knitting"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_listen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="listen"
+        android:gravity="center"
+        android:textColor="#545454"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#A0A0A0"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:layout_below="@+id/relax_play"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
+
+    <edu.grinnellappdev.grinwell_android.CustomTextView
+        android:id="@+id/relax_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="other"
+        android:gravity="center"
+        android:textColor="#383838"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:background="#BABABA"
+        android:paddingTop="10dp"
+        fontName="Roboto-Regular.ttf"
+        android:layout_below="@+id/relax_listen"
+        android:paddingBottom="10dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"/>
 
 </RelativeLayout>

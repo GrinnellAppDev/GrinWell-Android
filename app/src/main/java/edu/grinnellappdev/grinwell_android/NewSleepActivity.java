@@ -9,6 +9,15 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class NewSleepActivity extends Activity {
 
@@ -17,6 +26,7 @@ public class NewSleepActivity extends Activity {
     FrameLayout mSetButton;
     String AmPm, mSleepHour, mSleepMin, mWakeHour, mWakeMin;
     int mClick = 0;
+    double finalDiffTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,31 +86,63 @@ public class NewSleepActivity extends Activity {
                             Integer.parseInt(mWakeHour), Integer.parseInt(mWakeMin));
 
 
-                    mPrompt.setText("You slept for:" + timeSlept);
+                    mPrompt.setText("You slept for: " + timeSlept);
+
+                    save(finalDiffTime);
 
                 }
             }
         });
     }
 
-    public void publicSubmit(){
+    public void save(final double sleepAmount){
 
 
-        finish();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
+        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject data, ParseException e) {
+
+                data.put("Sleep", sleepAmount);
+                data.saveInBackground();
+
+            }
+        });
+
+//        startActivity(new Intent(NewRelaxActivity.this, HomeActivity.class));
+//        finish();
+
+
+
     }
 
 
     public String calculateTime(int startHour, int startMin, int endHour, int endMin){
 
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        String startTime = startHour + ":" + startMin;
+        String endTime = endHour + ":" + endMin;
+        String endRes = "";
 
-        int hoursSlept = (24 - startHour) + endHour;
-        int minsSlept = (startMin - 60) + endMin;
+        try {
+            Date date1 = format.parse(startTime);
+            Date date2 = format.parse(endTime);
+            long diff = date2.getTime() - date1.getTime();
 
-        hoursSlept = (minsSlept < 0) ? hoursSlept - 1 : hoursSlept;
-        minsSlept = Math.abs(minsSlept);
+            long diffMinutes = diff / (60 * 1000) % 60;
+            long diffHours = diff / (60 * 60 * 1000) % 24;
 
-        String endRes = hoursSlept + " hours and " + minsSlept + " minute";
-        endRes = (minsSlept > 1) ? endRes + "s": endRes;
+            finalDiffTime = (diff / (60 * 1000)) / 60.0;
+
+
+            endRes = diffHours + " hours and " + diffMinutes + " minute";
+
+        } catch (Exception e){
+
+
+        }
+
 
         return endRes;
     }

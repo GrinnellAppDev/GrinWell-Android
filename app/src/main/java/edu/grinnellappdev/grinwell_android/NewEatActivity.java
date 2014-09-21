@@ -6,16 +6,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 
 public class NewEatActivity extends ActionBarActivity {
 
     ImageView vegButton, fruitButton;
     TextView mTotal;
-    int numVeg = 0;
-    int numFruit = 0;
-
+    int numFruitAndVeg = 0;
+    ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +29,27 @@ public class NewEatActivity extends ActionBarActivity {
 
         getActionBar().hide();
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
+        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject data, ParseException e) {
+
+                numFruitAndVeg = data.getInt("FruitsAndVegetables");
+
+                mTotal.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mTotal.setText(numFruitAndVeg + "/5");
+                        mProgressBar.setVisibility(View.INVISIBLE);
+                    }
+                }, 1000);
+
+
+            }
+        });
 
 
         mTotal = (TextView) findViewById(R.id.total_eaten);
@@ -30,10 +57,10 @@ public class NewEatActivity extends ActionBarActivity {
         vegButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numVeg++;
-                mTotal.setText((numFruit + numVeg) + "/5");
+                numFruitAndVeg++;
+                mTotal.setText(numFruitAndVeg + "/5");
 
-                //update database
+                save(numFruitAndVeg);
             }
         });
 
@@ -42,12 +69,32 @@ public class NewEatActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                numFruit++;
-                mTotal.setText((numFruit + numVeg) + "/5");
+                numFruitAndVeg++;
+                mTotal.setText(numFruitAndVeg + "/5");
+
+                save(numFruitAndVeg);
             }
         });
     }
 
+    public void save(final int total){
+
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
+        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject data, ParseException e) {
+
+                data.put("FruitsAndVegetables",total );
+                data.saveInBackground();
+
+            }
+        });
+
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

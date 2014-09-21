@@ -12,8 +12,11 @@ import android.widget.EditText;
 
 import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.Date;
 
 
 public class NewSignUpActivity extends Activity {
@@ -54,10 +57,13 @@ public class NewSignUpActivity extends Activity {
 
                 //else all entries are valid
                 else {
-                    ParseUser newUser = new ParseUser();
+                   ParseUser newUser = new ParseUser();
+
                     newUser.setPassword(passwordText);
                     newUser.setEmail(emailText);
                     newUser.setUsername(emailText);
+
+
 
                     ParseACL defaultACL = new ParseACL();
                     defaultACL.setPublicReadAccess(true);
@@ -71,6 +77,11 @@ public class NewSignUpActivity extends Activity {
                                 Intent intent = new Intent(NewSignUpActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 //todo:.....>>>>>>
+
+                                ParseObject data = new ParseObject("Dates");
+                                data.put("User", ParseUser.getCurrentUser());
+                                data.put("Date", new Date());
+                                data.saveInBackground();
                                 finish();
                             }//if (e ==null)
                             else {

@@ -1,11 +1,20 @@
 package edu.grinnellappdev.grinwell_android;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 
 public class NewMovementActivity extends Activity {
@@ -13,7 +22,9 @@ public class NewMovementActivity extends Activity {
 
     FrameLayout mWalk15, mWalk30, mRunning15, mRunning30, mDancing15, mDancing30, mSwimming15, mSwimming30,
     mBiking15, mBiking30, mOther15, mOther30;
-    int mWalkTotal = 0, mRunningTotal = 0, mDancingTotal = 0, mSwimmingTotal = 0, mBikingTotal = 0, mOtherTotal = 0;
+    int mWalkTotal = 0, mRunningTotal = 0, mDancingTotal = 0, mSwimmingTotal = 0, mBikingTotal = 0, mOtherTotal = 0,  mGrandTotal = 0;
+    TextView mTotal;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +33,9 @@ public class NewMovementActivity extends Activity {
 
         getActionBar().hide();
 
+        mContext = this;
 
+        mTotal = (TextView) findViewById(R.id.mvmt_total);
 
         mWalk15 = (FrameLayout) findViewById(R.id.walking_15);
         mWalk30 = (FrameLayout)findViewById(R.id.walking_30);
@@ -32,6 +45,9 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mWalkTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
+                Toast.makeText(mContext, "clicked walk 15", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -41,6 +57,9 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mWalkTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
+                Toast.makeText(mContext, "clicked walk 30", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -53,6 +72,8 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mRunningTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -61,6 +82,8 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mRunningTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
 
             }
         });
@@ -73,6 +96,8 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mDancingTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -81,6 +106,8 @@ public class NewMovementActivity extends Activity {
             public void onClick(View view) {
 
                 mDancingTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -91,6 +118,9 @@ public class NewMovementActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                mSwimmingTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -98,6 +128,9 @@ public class NewMovementActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                mSwimmingTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -108,6 +141,9 @@ public class NewMovementActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                mBikingTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -115,6 +151,9 @@ public class NewMovementActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                mBikingTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -124,7 +163,9 @@ public class NewMovementActivity extends Activity {
         mOther15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mOtherTotal =+ 15;
+                mGrandTotal = mGrandTotal + 15;
+                updateTotal(mGrandTotal);
             }
         });
 
@@ -132,13 +173,44 @@ public class NewMovementActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+                mOtherTotal =+ 30;
+                mGrandTotal = mGrandTotal + 30;
+                updateTotal(mGrandTotal);
             }
         });
 
 
     }
 
+    public void updateTotal(int total){
 
+        double grandTotalD = total/60.0;
+        mTotal.setText(grandTotalD + " hrs");
+        save(grandTotalD);
+
+
+    }
+
+
+
+    public void save(final double total){
+
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
+        query.whereEqualTo("User", ParseUser.getCurrentUser());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject data, ParseException e) {
+
+                data.put("MovementAmount",total );
+                data.saveInBackground();
+
+            }
+        });
+
+
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -6,11 +6,20 @@
     tools:context="edu.grinnellappdev.grinwell_android.NewEatActivity">
 
 
+    <FrameLayout
+        android:id="@+id/total_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        >
+
+
     <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0/5"
+        android:text=""
         android:padding="10dp"
         android:id="@+id/total_eaten"
         android:layout_alignParentBottom="true"
@@ -20,6 +29,16 @@
         android:textSize="45dp"
         android:background="#80B280"/>
 
+        <ProgressBar
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center" />
+
+
+    </FrameLayout>
+
     <edu.grinnellappdev.grinwell_android.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,7 +46,7 @@
         app:fontName="Roboto-Bold.ttf"
         android:padding="10dp"
         android:id="@+id/textView2"
-        android:layout_above="@+id/total_eaten"
+        android:layout_above="@+id/total_container"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textSize="45sp"
@@ -55,4 +74,7 @@
         android:padding="25dp"
         android:background="@drawable/circle_light"
         android:src="@drawable/apple"/>
+
+
+
 </RelativeLayout>
