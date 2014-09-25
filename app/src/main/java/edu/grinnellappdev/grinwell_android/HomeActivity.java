@@ -2,8 +2,10 @@ package edu.grinnellappdev.grinwell_android;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +34,7 @@ import static edu.grinnellappdev.grinwell_android.R.id.imageButton_relax;
 import static edu.grinnellappdev.grinwell_android.R.id.imageButton_sleep;
 
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements ChallengeFragment.OnFragmentInteractionListener {
 
     TextView statsDate, mKingtonSleepText, mKingtonMovementText, mKingtonEatText, mKingtonWellnessText;
     ImageView mSleepCrown, mEatCrown, mRelaxCrown, mMoveCrown;
@@ -42,11 +45,13 @@ public class HomeActivity extends Activity {
     boolean mKingtonWellness = false;
     Context mContext;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getActionBar().hide();
         mContext = this;
 
 //        //parse initialize
@@ -58,6 +63,31 @@ public class HomeActivity extends Activity {
         View mMenuView = mInflater1.inflate(R.layout.menu, null, false);
 
         TextView logout = (TextView) mMenuView.findViewById(R.id.logout_menu);
+        TextView challenge = (TextView) mMenuView.findViewById(R.id.challenge_menu);
+        TextView about = (TextView) mMenuView.findViewById(R.id.about_menu);
+
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RelativeLayout rl = (RelativeLayout) findViewById(R.id.container_home);
+                DialogFragment challengeFrag = ChallengeFragment.newInstance(R.layout.fragment_about);
+                challengeFrag.show(getFragmentManager(), "dialog");
+            }
+        });
+
+        challenge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                RelativeLayout rl = (RelativeLayout) findViewById(R.id.container_home);
+                DialogFragment challengeFrag = ChallengeFragment.newInstance(R.layout.fragment_challenge);
+                challengeFrag.show(getFragmentManager(), "dialog");
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.add(rl.getId(), challengeFrag).commitAllowingStateLoss();
+
+            }
+        });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +107,7 @@ public class HomeActivity extends Activity {
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menu.setFadeDegree(0.35f);
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-        menu.setBehindWidth(600);
+        menu.setBehindWidth(650);
         menu.setShadowWidth(100);
         menu.setShadowDrawable(R.drawable.shadow);
         menu.setMenu(mMenuView);
@@ -134,21 +164,36 @@ public class HomeActivity extends Activity {
 
 
 
+        refresh();
 
-//        ParseQuery<ParseUser> userQuery = ParseUser.getQuery();
-//        userQuery.whereEqualTo("objectId", "EvFCcNYqRu");
-//
-//        userQuery.getFirstInBackground(new GetCallback<ParseUser>() {
-//            @Override
-//            public void done(ParseUser parseUser, ParseException e) {
-//                if (e == null){
-//                    mKington = parseUser;
-//                }
-//            }
-//        });
+
+        ActionBar mActionBar = getActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+
+        View mCustomView = mInflater.inflate(R.layout.actionbar, null, false);
+
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+
+    }
+
+
+    public void animator(View v){
+        AlphaAnimation anim = new AlphaAnimation(0, 1);
+//					ObjectAnimator animator = ObjectAnimator.ofInt(scrollView,
+//							"scrollY", 0, mRecipeName.getBottom());
+        anim.setDuration(800);
+
+        v.startAnimation(anim);
+
+    }
+
+    public void refresh(){
 
         ParseQuery<ParseObject> queryKington = ParseQuery.getQuery("Dates");
-        queryKington.whereEqualTo("UserID", "EvFCcNYqRu");
+        queryKington.whereEqualTo("createdBy", "EvFCcNYqRu");
         queryKington.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
@@ -177,7 +222,7 @@ public class HomeActivity extends Activity {
         });
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
@@ -187,26 +232,41 @@ public class HomeActivity extends Activity {
                 if (data != null) {
 
                     if (data.getInt("FruitsAndVegetables") >= mKingtonFood) {
-                      crownAnimator(mEatCrown);
+                        if (mEatCrown.getVisibility() == View.INVISIBLE)
+                        crownAnimator(mEatCrown);
 
+                    } else{
+                        mEatCrown.setVisibility(View.INVISIBLE);
                     }
 
                     if (data.getDouble("Sleep") >= mKingtonSleep){
 
-                     crownAnimator(mSleepCrown);
+                        if (mSleepCrown.getVisibility() == View.INVISIBLE)
+                        crownAnimator(mSleepCrown);
+
+
+                    } else {
+
+                        mSleepCrown.setVisibility(View.INVISIBLE);
 
 
                     }
 
                     if (data.getDouble("MovementAmount") >= mKingtonMovement){
 
+                        if (mMoveCrown.getVisibility() == View.INVISIBLE)
                         crownAnimator(mMoveCrown);
 
 
+                    } else{
+                        mMoveCrown.setVisibility(View.INVISIBLE);
                     }
 
                     if(data.getBoolean("WellnessActivity")){
+                        if (mRelaxCrown.getVisibility() == View.INVISIBLE)
                         crownAnimator(mRelaxCrown);
+                    } else {
+                        mRelaxCrown.setVisibility(View.INVISIBLE);
                     }
                 }
 
@@ -214,30 +274,14 @@ public class HomeActivity extends Activity {
         });
 
 
-
-        ActionBar mActionBar = getActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater mInflater = LayoutInflater.from(this);
-
-        View mCustomView = mInflater.inflate(R.layout.actionbar, null, false);
-
-        mActionBar.setCustomView(mCustomView);
-        mActionBar.setDisplayShowCustomEnabled(true);
-
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-    public void animator(View v){
-        AlphaAnimation anim = new AlphaAnimation(0, 1);
-//					ObjectAnimator animator = ObjectAnimator.ofInt(scrollView,
-//							"scrollY", 0, mRecipeName.getBottom());
-        anim.setDuration(800);
-
-        v.startAnimation(anim);
-
+        refresh();
     }
-
 
     public void crownAnimator(ImageView crown){
 
@@ -250,6 +294,10 @@ public class HomeActivity extends Activity {
         anim.setFillAfter(true);
 
         crown.startAnimation(anim);
+    }
+
+    public void onFragmentInteraction(Uri uri){
+
     }
 
 

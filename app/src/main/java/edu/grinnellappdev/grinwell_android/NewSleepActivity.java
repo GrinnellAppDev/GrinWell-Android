@@ -26,7 +26,7 @@ import java.util.Date;
 public class NewSleepActivity extends Activity {
 
     TimePicker mPicker;
-    TextView mPrompt, mWakeTime, mSleepTime;
+    TextView mPrompt, mWakeTime, mSleepTime, mButtonText;
     FrameLayout mSetButton;
     String AmPm, mSleepHour, mSleepMin, mWakeHour, mWakeMin;
     int mClick = 0;
@@ -68,7 +68,7 @@ public class NewSleepActivity extends Activity {
                     mPicker.setCurrentHour(0);
                     mPicker.setCurrentMinute(0);
 
-                    animateFade(mPrompt, "What time did you wake up?");
+                   animateFade(mPrompt, "What time did you wake up?");
 
 //                    animateFadeIn(mPrompt, 0);
 
@@ -94,8 +94,20 @@ public class NewSleepActivity extends Activity {
                             Integer.parseInt(mWakeHour), Integer.parseInt(mWakeMin));
 
                     animateFade(mPrompt, "You slept for: " + timeSlept);
+                    mButtonText = (TextView) findViewById(R.id.sleep_button);
+                    animateFade(mButtonText, "Reset");
+
 
                     save(finalDiffTime);
+
+                } else if (mClick > 2 ){
+
+                    mClick = 0;
+                    animateFade(mButtonText, "Set");
+                    animateFade(mPrompt, "When did you fall asleep?");
+                    mWakeTime.setText("");
+                    mSleepTime.setText("");
+
 
                 }
             }
@@ -106,7 +118,7 @@ public class NewSleepActivity extends Activity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
@@ -130,7 +142,7 @@ public class NewSleepActivity extends Activity {
     public void animateFadeIn(View v){
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
-        anim.setDuration(500);
+        anim.setDuration(400);
         anim.setInterpolator(new AccelerateInterpolator());
         anim.setFillAfter(true);
 
@@ -140,7 +152,7 @@ public class NewSleepActivity extends Activity {
     public void animateFade(final TextView v, final String message){
 
         Animation anim = new AlphaAnimation( 1.0f, 0.0f);
-        anim.setDuration(500);
+        anim.setDuration(400);
         anim.setInterpolator(new DecelerateInterpolator());
         anim.setFillAfter(true);
         anim.setAnimationListener(new Animation.AnimationListener() {

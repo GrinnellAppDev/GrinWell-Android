@@ -197,7 +197,7 @@ public class NewMovementActivity extends Activity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {

@@ -25,22 +25,22 @@
         android:textSize="40sp"
         app:fontName="Roboto-Regular.ttf"/>
 
-    <edu.grinnellappdev.grinwell_android.CustomTextView
-        android:id="@+id/guide_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/about_menu"
-        android:layout_marginBottom="20dp"
-        android:text="guide"
-        android:textColor="#FFFFFF"
-        android:textSize="40sp"
-        app:fontName="Roboto-Regular.ttf"/>
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/challenge_menu"
+            android:layout_below="@id/about_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="challenge"
+            android:layout_marginBottom="20dp"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:fontName="Roboto-Regular.ttf"/>
 
     <edu.grinnellappdev.grinwell_android.CustomTextView
         android:id="@+id/logout_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/guide_menu"
+        android:layout_below="@id/challenge_menu"
         android:text="logout"
         android:clickable="true"
         android:layout_marginBottom="20dp"

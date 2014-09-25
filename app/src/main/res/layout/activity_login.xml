@@ -22,7 +22,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText_email"
-        android:hint="email"
+        android:hint="someone@grinnell.edu"
         android:gravity="center"
         android:textColorHighlight="#D50000"
         android:layout_below="@+id/login_header"

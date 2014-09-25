@@ -1,5 +1,6 @@
 package edu.grinnellappdev.grinwell_android;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -23,20 +24,27 @@ public class NewEatActivity extends ActionBarActivity {
     TextView mTotal;
     int numFruitAndVeg = 0;
     ProgressBar mProgressBar;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_eat);
 
+        mContext = this;
+
         getActionBar().hide();
+
+//        Toast.makeText(getApplicationContext(),ParseUser.getCurrentUser().getObjectId() , Toast.LENGTH_SHORT);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {
+
+
 
                 if (e==null) {
                     numFruitAndVeg = data.getInt("FruitsAndVegetables");
@@ -47,8 +55,12 @@ public class NewEatActivity extends ActionBarActivity {
                             mTotal.setText(numFruitAndVeg + "/5");
                             mProgressBar.setVisibility(View.INVISIBLE);
                         }
-                    }, 1000);
+                    }, 500);
 
+                }
+                else {
+
+                    Toast.makeText(mContext, ParseUser.getCurrentUser().getObjectId() + "", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -85,7 +97,7 @@ public class NewEatActivity extends ActionBarActivity {
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
-        query.whereEqualTo("UserID", ParseUser.getCurrentUser().getObjectId());
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
         query.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject data, ParseException e) {

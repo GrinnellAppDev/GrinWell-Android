@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollView"
+    android:layout_above="@+id/intro_text"
+    android:layout_centerHorizontal="true" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/heading_challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textSize="50sp"
+            android:text="#grinwell"
+            app:fontName="Roboto-Regular.ttf"
+            android:textColor="#535353"/>
+
+
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/intro_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The President’s Wellness Challenge is a 12-week event for students, staff, and faculty. The goal of the challenge is to motivate wellness behaviors in a number of dimensions. President Kington will also be participating in the challenge and publicly posting his progress to help motivate our campus community."
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/heading_challenge"
+            android:paddingLeft="30dp"
+            android:gravity="left"
+            android:paddingRight="30dp"
+            app:fontName="Roboto-Regular.ttf"
+            android:textSize="16sp"
+            />
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/bold_sleep"
+            android:layout_below="@+id/intro_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:text="SLEEP."
+            android:paddingLeft="30dp"
+            app:fontName="Roboto-Bold.ttf"
+            android:gravity="left"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/blurb_sleep"
+            android:layout_below="@+id/bold_sleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="4dp"
+            android:text="How many days per week can you get a solid 8 hours? What do you need to do to make time for this?"
+            app:fontName="Roboto-LightItalic.ttf"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/bold_eat"
+            android:layout_below="@+id/blurb_sleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:text="EAT."
+            android:paddingLeft="30dp"
+            app:fontName="Roboto-Bold.ttf"
+            android:gravity="left"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/blurb_eat"
+            android:layout_below="@+id/bold_eat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="4dp"
+            android:text="How many days per week can you get the recommended 5 servings of fruits and vegetables?"
+            app:fontName="Roboto-LightItalic.ttf"
+            android:paddingRight="30dp"/>
+
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/bold_move"
+            android:layout_below="@+id/blurb_eat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:text="MOVE."
+            android:paddingLeft="30dp"
+            app:fontName="Roboto-Bold.ttf"
+            android:gravity="left"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/blurb_move"
+            android:layout_below="@+id/bold_move"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="4dp"
+            android:text="How many days per week can you get in at least 30 minutes of movement?"
+            app:fontName="Roboto-LightItalic.ttf"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/bold_restore"
+            android:layout_below="@+id/blurb_move"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:text="RESTORE."
+            android:paddingLeft="30dp"
+            app:fontName="Roboto-Bold.ttf"
+            android:gravity="left"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/blurb_restore"
+            android:layout_below="@+id/bold_restore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="4dp"
+            android:text="How many days per week can you participate in an activity that restores you—meditation, hiking, playing with your child or grandchild, reading, writing, attending church, volunteering, baking bread—whatever recharges you."
+            app:fontName="Roboto-LightItalic.ttf"
+            android:paddingRight="30dp"/>
+
+        <edu.grinnellappdev.grinwell_android.CustomTextView
+            android:id="@+id/end_text"
+            android:layout_below="@+id/blurb_restore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:text="For each college community member (students, staff, faculty) who completes 12 weeks of the challenge, the College will donate to a local wellness charity!"
+            app:fontName="Roboto-Regular.ttf"
+            android:paddingRight="30dp"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+
+</ScrollView>
+

@@ -12,8 +12,13 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.parse.LogInCallback;
+import com.parse.ParseACL;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+import java.util.Date;
 
 public class LoginActivity extends Activity {
     //Variable declaration
@@ -30,6 +35,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
 
+        getActionBar().hide();
         //Get The EditText(s)
         email = (EditText) findViewById(R.id.editText_email);
         password = (EditText) findViewById(R.id.editText_password);
@@ -81,11 +87,86 @@ public class LoginActivity extends Activity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, NewSignUpActivity.class));
-                finish();
+
+                email = (EditText) findViewById(R.id.editText_email);
+                password = (EditText) findViewById(R.id.editText_password);
+
+
+                signUp();
+
             }
         });
     }//protected void onCreate
+
+    public void signUp(){
+
+
+        emailText = email.getText().toString();
+        passwordText = password.getText().toString();
+
+        // if one or more fields are empty
+        if (passwordText.equals("") || emailText.equals("")) {
+            //todo: refactor string
+            errorDialog("Please make sure all fields are provided");
+        } else {
+
+            emailText = email.getText().toString();
+            passwordText = password.getText().toString();
+
+            ParseUser newUser = new ParseUser();
+
+            newUser.setPassword(passwordText);
+            newUser.setEmail(emailText);
+            newUser.setUsername(emailText);
+
+
+            ParseACL defaultACL = new ParseACL();
+            defaultACL.setPublicReadAccess(true);
+            newUser.setACL(defaultACL);
+
+            newUser.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        //start feed intent
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+
+                        ParseObject data = new ParseObject("Dates");
+                        data.put("createdBy", ParseUser.getCurrentUser().getObjectId());
+                        data.put("Date", new Date());
+                        data.saveInBackground();
+                        finish();
+                    }//if (e ==null)
+                    else {
+                        errorDialog(e.getMessage());
+                    }//else
+                }//done
+            }//newUser.sign....
+            );
+
+
+        }
+
+    }
+
+
+    public void errorDialog(String str) {
+        //something went wrong!
+        //failed
+        //create the builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setMessage(str);
+        //TODO: add string to Strings file
+        builder.setTitle("Sign-Up Error");
+        builder.setPositiveButton(android.R.string.ok, null);
+        //create the dialog
+        AlertDialog dialog = builder.create();
+        //show the dialog
+        dialog.show();
+    }//errorDialog
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
