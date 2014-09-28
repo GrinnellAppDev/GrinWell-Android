@@ -199,6 +199,7 @@ public class HomeActivity extends Activity implements ChallengeFragment.OnFragme
             public void done(ParseObject data, ParseException e) {
 
 
+
                 if (e == null) {
                     mKingtonFood = data.getInt("FruitsAndVegetables");
                     mKingtonEatText.setText("Eat: " + mKingtonFood +"/5");
@@ -227,47 +228,79 @@ public class HomeActivity extends Activity implements ChallengeFragment.OnFragme
             @Override
             public void done(ParseObject data, ParseException e) {
 
-                mData = data;
+
+
+                Date currentDate = new Date();
+//                currentDate.get
+                Date date = data.getDate("Date");
+
+//                Toast.makeText(mContext,currentDate.getDate() + "" + date.getMonth(),Toast.LENGTH_SHORT).show();
+
+                if (e == null) {
+
+
+                    if (currentDate.getDate() == date.getDate()
+                            && currentDate.getMonth() == date.getMonth()
+                            && currentDate.getYear() == date.getYear()) {
+
+
+                        if (data.getInt("FruitsAndVegetables") >= mKingtonFood) {
+                            if (mEatCrown.getVisibility() == View.INVISIBLE)
+                                crownAnimator(mEatCrown);
+
+                        } else {
+                            mEatCrown.setVisibility(View.INVISIBLE);
+                        }
+
+                        if (data.getDouble("Sleep") >= mKingtonSleep) {
+
+                            if (mSleepCrown.getVisibility() == View.INVISIBLE)
+                                crownAnimator(mSleepCrown);
+
+
+                        } else {
+
+                            mSleepCrown.setVisibility(View.INVISIBLE);
+
+
+                        }
+
+                        if (data.getDouble("MovementAmount") >= mKingtonMovement) {
+
+                            if (mMoveCrown.getVisibility() == View.INVISIBLE)
+                                crownAnimator(mMoveCrown);
+
+
+                        } else {
+                            mMoveCrown.setVisibility(View.INVISIBLE);
+                        }
+
+                        if (data.getBoolean("WellnessActivity")) {
+                            if (mRelaxCrown.getVisibility() == View.INVISIBLE)
+                                crownAnimator(mRelaxCrown);
+                        } else {
+                            mRelaxCrown.setVisibility(View.INVISIBLE);
+                        }
+
+                    } else {
+                       ParseObject newDate =  new ParseObject("Dates");
+                       newDate.put("createdBy", ParseUser.getCurrentUser().getObjectId());
+                       newDate.put("Date", currentDate);
+                       newDate.saveInBackground();
+
+                    }
+
+                }
+
+
+
+                        mData = data;
 
                 if (data != null) {
 
-                    if (data.getInt("FruitsAndVegetables") >= mKingtonFood) {
-                        if (mEatCrown.getVisibility() == View.INVISIBLE)
-                        crownAnimator(mEatCrown);
-
-                    } else{
-                        mEatCrown.setVisibility(View.INVISIBLE);
-                    }
-
-                    if (data.getDouble("Sleep") >= mKingtonSleep){
-
-                        if (mSleepCrown.getVisibility() == View.INVISIBLE)
-                        crownAnimator(mSleepCrown);
 
 
-                    } else {
 
-                        mSleepCrown.setVisibility(View.INVISIBLE);
-
-
-                    }
-
-                    if (data.getDouble("MovementAmount") >= mKingtonMovement){
-
-                        if (mMoveCrown.getVisibility() == View.INVISIBLE)
-                        crownAnimator(mMoveCrown);
-
-
-                    } else{
-                        mMoveCrown.setVisibility(View.INVISIBLE);
-                    }
-
-                    if(data.getBoolean("WellnessActivity")){
-                        if (mRelaxCrown.getVisibility() == View.INVISIBLE)
-                        crownAnimator(mRelaxCrown);
-                    } else {
-                        mRelaxCrown.setVisibility(View.INVISIBLE);
-                    }
                 }
 
             }

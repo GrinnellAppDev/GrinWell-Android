@@ -124,7 +124,7 @@ public class NewSleepActivity extends Activity {
             public void done(ParseObject data, ParseException e) {
 
                 if (e == null) {
-                    data.put("Sleep", sleepAmount);
+                    data.put("Sleep", Math.abs(sleepAmount));
                     data.saveInBackground();
                 }
 
@@ -194,7 +194,7 @@ public class NewSleepActivity extends Activity {
             finalDiffTime = (diff / (60 * 1000)) / 60.0;
 
 
-            endRes = diffHours + " hours and " + diffMinutes + " minute";
+            endRes = Math.abs(diffHours) + " hours and " + Math.abs(diffMinutes) + " minute";
 
         } catch (Exception e){
 

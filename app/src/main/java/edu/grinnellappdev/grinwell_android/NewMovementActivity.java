@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ public class NewMovementActivity extends Activity {
     int mWalkTotal = 0, mRunningTotal = 0, mDancingTotal = 0, mSwimmingTotal = 0, mBikingTotal = 0, mOtherTotal = 0,  mGrandTotal = 0;
     TextView mTotal;
     Context mContext;
+    double mCurrentDoubleTotal;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,37 @@ public class NewMovementActivity extends Activity {
         setContentView(R.layout.activity_new_movement);
 
         getActionBar().hide();
+
+
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Dates");
+        query.whereEqualTo("createdBy", ParseUser.getCurrentUser().getObjectId());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject data, ParseException e) {
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBarMov);
+
+                if (e==null) {
+                    mCurrentDoubleTotal = data.getDouble("MovementAmount");
+
+                    mTotal.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mTotal.setText(mCurrentDoubleTotal/60.0 + " hrs");
+                            mProgressBar.setVisibility(View.INVISIBLE);
+                        }
+                    }, 500);
+
+                }
+                else {
+
+                    Toast.makeText(mContext, ParseUser.getCurrentUser().getObjectId() + "", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
         mContext = this;
 
@@ -186,7 +220,7 @@ public class NewMovementActivity extends Activity {
 
         double grandTotalD = total/60.0;
         mTotal.setText(grandTotalD + " hrs");
-        save(grandTotalD);
+        save(total);
 
 
     }

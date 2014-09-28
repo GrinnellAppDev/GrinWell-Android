@@ -1,6 +1,5 @@
 package edu.grinnellappdev.grinwell_android;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -18,7 +17,7 @@ import com.parse.ParseUser;
 
 public class NewRelaxActivity extends ActionBarActivity {
 
-    TextView mMeditation, mReading, mKnitting, mPlay, mListen, mOther;
+    TextView mMeditation, mReading, mKnitting, mPlay, mListen, mOther, mChosen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +25,16 @@ public class NewRelaxActivity extends ActionBarActivity {
 
         getActionBar().hide();
 
+        mChosen = (TextView)findViewById(R.id.relax_chosen);
+
         mMeditation = (TextView) findViewById(R.id.relax_meditation);
         mMeditation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                mChosen.setText(mMeditation.getText());
+
                 save();
 
             }
@@ -39,6 +44,10 @@ public class NewRelaxActivity extends ActionBarActivity {
         mReading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                mChosen.setText(mReading.getText());
+
                 save();
             }
         });
@@ -47,6 +56,10 @@ public class NewRelaxActivity extends ActionBarActivity {
         mKnitting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mChosen.setText(mKnitting.getText());
+
+
                 save();
 
             }
@@ -57,6 +70,10 @@ public class NewRelaxActivity extends ActionBarActivity {
         mPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mChosen.setText(mPlay.getText());
+
+
                 save();
             }
         });
@@ -66,6 +83,8 @@ public class NewRelaxActivity extends ActionBarActivity {
         mListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mChosen.setText(mListen.getText());
                 save();
             }
         });
@@ -74,6 +93,8 @@ public class NewRelaxActivity extends ActionBarActivity {
         mMeditation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mChosen.setText(mMeditation.getText());
                 save();
             }
         });
@@ -82,6 +103,8 @@ public class NewRelaxActivity extends ActionBarActivity {
         mOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mChosen.setText(mOther.getText());
                 save();
             }
         });
@@ -115,12 +138,12 @@ public class NewRelaxActivity extends ActionBarActivity {
                 }
             });
 
-        Intent intent = new Intent(NewRelaxActivity.this, HomeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-
-        finish();
+//        Intent intent = new Intent(NewRelaxActivity.this, HomeActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//
+//        finish();
 
 
 
