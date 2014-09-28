@@ -2,14 +2,14 @@
 <merger version="2" >
 
     <dataSet config="debug" >
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/build/intermediates/bundles/debug/res" >
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/build/intermediates/bundles/debug/res" >
             <file
                 name="slidingmenumain"
-                path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/build/intermediates/bundles/debug/res/layout/slidingmenumain.xml"
+                path="/home/sbl/Workspace/GrinWell-Android/library/build/intermediates/bundles/debug/res/layout/slidingmenumain.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                path="/home/sbl/Workspace/GrinWell-Android/library/build/intermediates/bundles/debug/res/values/values.xml"
                 qualifiers="" >
                 <item
                     name="selected_view"
@@ -84,9 +84,9 @@
         </source>
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/src/androidTest/res" />
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/build/generated/res/rs/test/debug" />
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/build/generated/res/generated/test/debug" />
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/src/androidTest/res" />
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/build/generated/res/rs/test/debug" />
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/build/generated/res/generated/test/debug" />
     </dataSet>
 
 </merger>

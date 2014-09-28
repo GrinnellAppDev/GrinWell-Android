@@ -10,6 +10,7 @@ import com.crashlytics.android.Crashlytics;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 public class MainActivity extends Activity {
 
@@ -24,8 +25,8 @@ public class MainActivity extends Activity {
         getActionBar().hide();
         //parse initialize
         Parse.initialize(this, "lZHvycY7GTVgeq52BwD1fFHlNUKHlMsrN5lrmBUm", "zRCIHNyIYcm2VEPbOgOqrSkkLVFtZOb4vTF9j1Na");
+        PushService.setDefaultPushCallback(this, MainActivity.class);
         ParseAnalytics.trackAppOpened(getIntent());
-
 
 
 

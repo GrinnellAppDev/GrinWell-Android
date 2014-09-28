@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/assets" />
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/samee/AndroidstudioProjects/GrinWell-Android/library/src/debug/assets" />
+        <source path="/home/sbl/Workspace/GrinWell-Android/library/src/debug/assets" />
     </dataSet>
 
 </merger>
